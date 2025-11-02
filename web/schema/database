@@ -1,0 +1,79 @@
+CREATE TABLE `lnd_device` (
+  `device_id` varchar(4) NOT NULL,
+  `device_name` varchar(50) NOT NULL,
+  `location_id` varchar(3) NOT NULL,
+  `serialno` varchar(5) NOT NULL,
+  `void` int(1) NOT NULL DEFAULT 0,
+  `take_photo` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`device_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+CREATE TABLE `lnd_environment` (
+  `device_id` varchar(4) DEFAULT NULL,
+  `timekey` varchar(5) DEFAULT NULL,
+  `temp` float(5,2) DEFAULT 0.00,
+  `humid` float(5,2) DEFAULT 0.00,
+  `rain` float(5,2) DEFAULT 0.00,
+  `vibration` float(5,2) DEFAULT 0.00,
+  `distance` float(5,2) DEFAULT 0.00,
+  `datekey` date DEFAULT NULL,
+  `soil` float(10,2) DEFAULT 0.00,
+  `docno` varchar(10) NOT NULL,
+  `landslide` int(1) NOT NULL DEFAULT 0,
+  `floot` int(1) NOT NULL DEFAULT 0,
+  `img_path` text DEFAULT NULL,
+  `textes` text DEFAULT NULL,
+  `soil_high` float(5,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`docno`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+CREATE TABLE `lnd_location` (
+  `location_id` varchar(3) NOT NULL,
+  `location_name` varchar(50) NOT NULL,
+  `latitude` varchar(20) NOT NULL,
+  `longtitude` varchar(20) NOT NULL,
+  `void` int(1) NOT NULL DEFAULT 0
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+CREATE TABLE `lnd_status` (
+  `device_id` varchar(4) NOT NULL,
+  `date` date DEFAULT NULL,
+  `time` varchar(5) DEFAULT NULL,
+  `status` int(1) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`device_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+
+CREATE TABLE `notification` (
+  `notification_id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `device_id` varchar(4) NOT NULL,
+  `location_id` varchar(3) NOT NULL,
+  `type` int(1) NOT NULL,
+  `text` text NOT NULL,
+  `create_at` timestamp NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`notification_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci AUTO_INCREMENT=16;
+
+CREATE TABLE `password_resets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `expires_at` datetime NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `used` tinyint(1) NOT NULL DEFAULT 0,
+  `ip_address` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT,
+  `username` varchar(120) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `email` varchar(120) NOT NULL,
+  `void` int(1) NOT NULL DEFAULT 0,
+  `role` tinyint(1) NOT NULL DEFAULT 0,
+  `create_at` datetime DEFAULT current_timestamp(),
+  `update_at` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci AUTO_INCREMENT=7;
+
+COMMIT;

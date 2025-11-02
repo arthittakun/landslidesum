@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Notification Channels สำหรับ Android 8.0+ -->
+    
+    <!-- Channel สำหรับการแจ้งเตือนทันที -->
+    <string name="instant_notification_channel_id">landslide_instant</string>
+    <string name="instant_notification_channel_name">การแจ้งเตือนทันที</string>
+    <string name="instant_notification_channel_description">การแจ้งเตือนที่แสดงทันที</string>
+    
+    <!-- Channel สำหรับการแจ้งเตือนตามเวลา -->
+    <string name="scheduled_notification_channel_id">landslide_scheduled</string>
+    <string name="scheduled_notification_channel_name">การแจ้งเตือนตามเวลา</string>
+    <string name="scheduled_notification_channel_description">การแจ้งเตือนที่จัดเวลาไว้</string>
+    
+    <!-- Channel สำหรับการแจ้งเตือนฉุกเฉิน -->
+    <string name="emergency_notification_channel_id">landslide_emergency</string>
+    <string name="emergency_notification_channel_name">การแจ้งเตือนฉุกเฉิน</string>
+    <string name="emergency_notification_channel_description">การแจ้งเตือนสำหรับเหตุการณ์ฉุกเฉิน</string>
+    
+    <!-- App Name -->
+    <string name="app_name">Landslide Alert</string>
+</resources>
